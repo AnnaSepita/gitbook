@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,500,600" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>New contact</title>
+    <script>
+        function valid(form) {
+            var name3 = form.name.value;
+            var surname = form.surname.value;
+            var phone = form.phone.value;
+            var email = form.email.value;
+            var email_pattern=/[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
+            var phone_pattern=/[0-9+]{4,13}/i;
+            var fail = false;
+            if (name3==="" || name3===" ")
+                fail = "You did not enter name!";
+            else if (surname==="" || surname===" ")
+                fail = "You did not enter surname!";
+            else if (phone_pattern.test(phone)===false)
+                fail="Incorrect number!";
+            else if (email_pattern.test(email)===false)
+                fail="Incorrect email!";
+            if (fail)
+                alert(fail);
+            else
+                window.location="index.html"
+        }
+
+    </script>
+</head>
+<body>
+<p class="new">New contact</p>
+<form action="" method="post" name="test" id="form">
+    <label for="name">Name</label>
+    <input type="text" name="name" placeholder="Name" id="name"> <br /><br />
+    <label for="surname">Surname</label>
+    <input type="text" name="surname" placeholder="Surname" id="surname"> <br /><br />
+    <label for="phone">Phone</label>
+    <input type="text" name="phone" placeholder="Phone" id="phone"> <br /><br />
+    <label for="email">Email</label>
+    <input type="text" name="email" placeholder="Email" id="email"> <br /><br />
+    <input type="button" name="submit" onclick="valid(document.getElementById('form'))" value="Save" class="button"> <br /><br />
+</form>
+<script src="book.js">
+</script>
+</body>
+</html>

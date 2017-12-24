@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone book</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/Open+Sans">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<body>
+<i class="fa fa-plus" aria-hidden="true" title="Add"></i>
+<div id="block">
+    <h1>Contacts</h1>
+</div>
+<div>
+    <form action="" method="post" class="search">
+        <input type="search" name="" placeholder="Search" class="input" onkeydown="" id="text-to-find"/>
+        <input type="submit" name="" value="" class="submit" onclick="javascript: FindOnPage('text-to-find'); return false;"/>
+    </form>
+</div>
+<div id="list">
+</div>
+<div id="book">
+</div>
+<div><p id="name1" onclick=" " ></p>
+    <p name="surname"></p></div>
+<script src="book.js">
+</script>
+<script>
+var lastResFind="";
+var copy_page="";
+function TrimStr(s) {
+s = s.replace( /^\s+/g, '');
+return s.replace( /\s+$/g, '');
+}
+function FindOnPage(inputId) {
+    var obj = window.document.getElementById(inputId);
+var textToFind;
+
+if (obj) {
+textToFind = TrimStr(obj.value);
+} else {
+alert("Nothing was found!");
+return;
+}
+if (textToFind === "") {
+alert("You did not enter anything!");
+return;
+}
+if(document.body.innerHTML.indexOf(textToFind)==="-1")
+alert("Nothing was found!");
+if(copy_page.length>0)
+document.body.innerHTML=copy_page;
+else copy_page=document.body.innerHTML;
+document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");
+document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:red'>"+textToFind+"</a>");
+lastResFind=textToFind;
+window.location = '#'+textToFind;
+}
+</script>
+</body>
+</html>

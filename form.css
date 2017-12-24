@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin-top: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background: url("1.jpg");
+}
+label{
+    font: 500 16px/1 'Hind', sans-serif;
+}
+#name, #email, #surname, #phone{
+    float: right;
+}
+.new{
+    font: 500 20px/1.5 'Hind', sans-serif;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
