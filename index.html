@@ -1,65 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Phone book</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <title>Phonebook</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/fonts.css">
+    <link rel="stylesheet" href="style/fontawesome/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black">
     <link href="https://fonts.googleapis.com/css?family=Hind:400,500,600" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.google.com/specimen/Open+Sans">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 </head>
-<body>
-<i class="fa fa-plus" aria-hidden="true" title="Add"></i>
-<div id="block">
-    <h1>Contacts</h1>
-</div>
-<div>
-    <form action="" method="post" class="search">
-        <input type="search" name="" placeholder="Search" class="input" onkeydown="" id="text-to-find"/>
-        <input type="submit" name="" value="" class="submit" onclick="javascript: FindOnPage('text-to-find'); return false;"/>
-    </form>
-</div>
-<div id="list">
-</div>
-<div id="book">
-</div>
-<div><p id="name1" onclick=" " ></p>
-    <p name="surname"></p></div>
-<script src="book.js">
-</script>
-<script>
-var lastResFind="";
-var copy_page="";
-function TrimStr(s) {
-s = s.replace( /^\s+/g, '');
-return s.replace( /\s+$/g, '');
-}
-function FindOnPage(inputId) {
-    var obj = window.document.getElementById(inputId);
-var textToFind;
-
-if (obj) {
-textToFind = TrimStr(obj.value);
-} else {
-alert("Nothing was found!");
-return;
-}
-if (textToFind === "") {
-alert("You did not enter anything!");
-return;
-}
-if(document.body.innerHTML.indexOf(textToFind)==="-1")
-alert("Nothing was found!");
-if(copy_page.length>0)
-document.body.innerHTML=copy_page;
-else copy_page=document.body.innerHTML;
-document.body.innerHTML = document.body.innerHTML.replace(eval("/name="+lastResFind+"/gi")," ");
-document.body.innerHTML = document.body.innerHTML.replace(eval("/"+textToFind+"/gi"),"<a name="+textToFind+" style='background:red'>"+textToFind+"</a>");
-lastResFind=textToFind;
-window.location = '#'+textToFind;
-}
-</script>
+<header>
+    <div class="phonebook"> <h1><i class="fa fa-users" aria-hidden="true"></i> Contacts</h1> </div>
+    <div class="add_contact">
+        <form > <input id="addBtn" onclick="addContact()" class="add_btn" title="Add" type="button" value=" + " ></form></div>
+    <div> <div class="search">
+        <form><input class="sfield" value = "" onkeyup="search()" id="sfield" type="text" placeholder="Search"></form>
+    </div>
+    </div>
+</header>
+<body onload="checkContacts()">
+        <div id="newcont" class="cnt">
+            <div class="new-content new_form">
+                <span onclick="closeForm()" class="close" title="Close"><i class="fa fa-times fa-spin" aria-hidden="true"></i></span>
+                <form id="addd">
+                    <div class="addform">
+                        <div class="addname">Name
+                            <input type="text" title="Required field!" class="formField" name="name" id="formName" placeholder="Name" required><br>
+                            Surname<input type="text" title="Required field!" name="lastname" id="formLastname" placeholder="Surname" required>
+                        </div>
+                        <div class="addc"> <div class="telform" id="telorm">
+                             <p id="tel_field0" class="tell"><i class="fa fa-phone" aria-hidden="true"></i>
+                                 <input type="tel" name="telephone" id="formTelephone0" placeholder="Phone" title="Required field!"> </p>
+                            </div>
+                            <div class="emails_form" id="emails_form">
+                            <p id="email_field0" class="emailf"><i class="fa fa-envelope" aria-hidden="true"></i>
+                                <input type="email" name="email" id="formEmail0" title="Required field!" required placeholder="Email" >
+                            </p>
+                            </div>
+                            <p>
+                                <input class="addSave" id="addSave" title="Save" type="submit" value="Save">
+                                <input class="addSave" id="addSaveEdit" type="button" title="Save"  value="Save It">
+                            </p>
+                        </div> 
+                    </div>     
+                </form>
+            </div>
+        </div>
+        <div id="myModalRemove" class="cnt">
+            <div class="new-content new_remove_content"> <p>Are you sure?</p> <button id="remove_yes" title="Yes">Yes</button> <button id="remove_no" title="No">No</button> </div>
+        </div>
+        <div id="myModalCreating" class="cnt"> <div class="new-content new_remove_content"> <p id="ok_btn" onclick = "closeMessage()">Saved!</p> </div> </div>
+        <p id="noco">Add new contacts!</p> <p id="no_res">Nothing was found!</p>
+        <div id="contacts"> </div>
+    <script src="js/index.js"></script>
 </body>
 </html>

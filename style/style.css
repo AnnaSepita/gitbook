@@ -1,0 +1,343 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+
+    width: 95%;
+    margin-left: 20px;
+    letter-spacing: 5px;
+    font: 500 18px/1.5 'Hind', sans-serif;
+    background: url("1.jpg");
+}
+.fa-pencil,.fa-trash-o {
+    cursor: pointer;
+}
+header {
+    text-align: left;
+    padding-left: 10px;
+    letter-spacing: 5px;
+}
+.phonebook {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    padding-top: 24px;
+    padding-bottom: 30px;
+    letter-spacing: 6px;
+}
+.add_contact {
+    float: right;
+}
+.search {
+    display: inline-block;
+}
+.sfield {
+    border: 1px solid black;
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    height: 40px;
+    padding-left: 11px;
+    border-radius: 8px;
+}
+
+.add_btn {
+    border: none;
+    background-color: lightgray;
+    color: black;
+    font-size: 25px;
+    font-weight: 800;
+    padding: 0px 40px;
+    cursor: pointer;
+}
+.contact_name {
+    text-align: left;
+    padding: 25px;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+}
+.contact_name.active + .contact_card {
+    display: block;
+}
+.contact_name:hover {
+    cursor: pointer;
+}
+.contact_card {
+    display: none;
+}
+.card_actions button{
+    margin-left: 30px;
+    margin-top: 10px;
+    background: transparent;
+    font-size: 15px;
+}
+.card_content {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+.card_content .fa-phone {
+    font-size: 20px;
+    padding-left: 30px;
+}
+.card_content .fa-envelope {
+    font-size: 15px;
+}
+.card_content input {
+    background: transparent;
+    font-size: 12px;
+}
+.card_content input[type=tel] {
+    width: 100px;
+    margin-right: 5px;
+}
+.card_content input[type=email]{
+    width: 100px;
+}
+button {
+    background: transparent;
+    border: none;
+}
+.cnt {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 20px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 70%;
+    background-color: rgb(0,0,0);
+    background: url("1.jpg");
+}
+.new-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+.new_form {
+    overflow: auto;
+}
+.close {
+    color: black;
+    float: left;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.addc {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.addform input {
+    background: transparent;
+    font-size: 15px;
+    width: 100px;
+}
+.addc input[type=email],
+.addc input[type=tel] {
+    margin-right: 15px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.addc .addSave {
+    border: none;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    padding: 7px 5px;
+    margin-top: 10px;
+    margin-left: 8%;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.addc .fa-phone {
+    font-size: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.addc .fa-envelope {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.addname {
+    font-size: 16px;
+}
+.addname input {
+    padding-left: 15px;
+    font-size: 15px;
+    width: 100px;
+}
+#noco{
+    display: none;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+.first_name,
+.last_name {
+    font-size: 18px;
+    padding: 7px 0;
+    border: 1px solid cadetblue;
+    display: none;
+}
+.first_name {
+    margin-left: 30px;
+    margin-right: 15px;
+}
+.addfieldbtn {
+    display: none;
+}
+#no_res {
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 30px;
+}
+.tels,  .emails {
+    display: inline-block;
+}
+.emails_form input[type=email]{
+    width: 100px;
+}
+.new_remove_content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+.new_remove_content button {
+    border: none;
+    color: black;
+    font-size: 15px;
+    padding: 7px 15px;
+    margin-top: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#remove_no {
+    color: black;
+    padding: 7px 10px;
+}
+.tell .new {
+    margin-right: 10px;
+}
+.emailf .new {
+    margin-right: 10px;
+}
+.contact_name span {
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 20px;
+    color: black;
+}
+
+@media only screen and (max-device-width : 1420px){
+    .phonebook {
+        font-size: 18px;
+    }
+    .search {
+        display: block;
+    }
+    .sfield {
+        font-size: 14px;
+        width: 65%;
+        height: 30px;
+    }
+    .add_btn {
+        font-size: 25px;
+        margin-top: 0px;
+        padding: 0;
+    }
+    .contact_name {
+        font-size: 20px;
+        padding-bottom: 0;
+    }
+    .card_content input[type=email],
+    .card_content input[type=tel] {
+        font-size: 14px;
+        width: 90px;
+        margin-bottom: 10px;
+    }
+    .card_content input[type=email]{
+        width: 200px;
+    }
+    .card_content .fa-phone {
+        font-size: 20px;
+        margin-right: 20px;
+    }
+    .card_content .fa-envelope {
+        font-size: 20px;
+        margin-left: 10px;
+        margin-right: 25px;
+    }
+    .card_actions button {
+        font-size: 20px;
+    }
+    .delbtn {
+        margin-left: 10px;
+    }
+    .addname {
+        font-size: 24px;
+    }
+    .addform input {
+        font-size: 18px;
+        width: 180px;
+    }
+    .addname input {
+        font-size: 18px;
+        width: 100px;
+    }
+    .addc .fa-phone {
+        font-size: 24px;
+        margin-right: 10px;
+        margin-left: 15px;
+    }
+    .addc .fa-envelope {
+        font-size: 20px;
+        margin-left: 19px;
+        margin-right: 9px;
+    }
+    .addc .addSave {
+        font-size: 18px;
+        padding: 7px 20px;
+        margin-top: 20px;
+        margin-left: 10%;
+    }
+    .cnt .fa-plus {
+        font-size: 18px;
+    }
+    .cnt .fa-minus {
+        font-size: 18px;
+    }
+    .new_remove_content {
+        font-size: 30px;
+    }
+    .new_remove_content button {
+        font-size: 20px;
+    }
+    #noco,
+    #no_res {
+        font-size: 30px;
+    }
+}
+@media only screen and (max-device-width : 409px){
+    .sfield {
+        font-size: 12px;
+        width: 45%;
+        height: 30px;
+    }
+    body {
+        width: 90%;
+    }
+
+}
+
+
+
+
