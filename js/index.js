@@ -33,7 +33,6 @@ function closeInfo() { var nnew = document.getElementById("creating"); nnew.styl
 window.onclick = function(event) { var ncc = document.getElementById("creating"); if (event.target == ncc){
     ncc.style.display = "none"; closeInfo();}
 };
-function closeMessage1() { location.reload(); }
 function saveContact(form) {
     var contacts = JSON.parse(localStorage.getItem("contacts"));
     if (contacts == null) { var contacts = []; }
