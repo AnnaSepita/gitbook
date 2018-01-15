@@ -74,13 +74,13 @@ function saveContact(form) {
     for (i = 0; i < tel.length; i++) {
         var formPhone = document.getElementById("formTelephone" + i);
         if ((formPhone.value == "") || (!formPhone.value.match(tel_oblig))){
-            var noth = 1; formPhone.style.border = "1px solid red"; alert("Enter number!");
+            var noth = 1; formPhone.style.border = "1px solid red"; alert("Enter phonenumber! At least four numbers!");
             return false;
         } else {formPhone.style.border= "1px solid black";}
     }
     for (i = 0; i < email.length; i++) { var formEmail = document.getElementById("formEmail" + i);
         if ((formEmail.value == "") ||  (!formEmail.value.match(email_oblig))){
-            var nott = 1; formEmail.style.border = "1px solid red"; alert("Enter email!");
+            var nott = 1; formEmail.style.border = "1px solid red"; alert("Enter email! Don't forget to use symbol '@'! Example: qwe@gmail.com");
             return false;
         } else {formEmail.style.border= "1px solid black";}
     }
@@ -145,13 +145,13 @@ function editContact(editbtn) {
         }
         for (i = 0; i < teel.length; i++) { var formPh = document.getElementById("formTelephone" + i);
             if ((formPh.value == "") || (!formPh.value.match(oblig))){ eP = 1; formPh.style.border = "1px solid red";
-                alert("Enter phonenumber!");
+                alert("Enter phonenumber!  At least four numbers! Exaample: 1234");
             }
         }
         for (i = 0; i <emff.length; i++) { var formEmail=document.getElementById("formEmail" + i);
             if ((formEmail.value == "") || (!formEmail.value.match(oem))){
                 eE = 1; formEmail.style.border = "1px solid red";
-                alert("Enter email!"); }
+                alert("Enter email! Don't forget to use symbol '@'! Example: qwe@gmail.com"); }
         }
         if ((eN !== 1) && (eS !== 1) && (eP !== 1) && (eE !== 1) && (w !== 1) && (m !== 1)) {
             contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts)); document.getElementById("newcont").style.display = "none";
