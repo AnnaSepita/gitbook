@@ -43,9 +43,9 @@ function saveContact(form) {
     contact.name = form.name.value; contact.lastname = form.lastname.value; contact.telephone = ['']; contact.email = [''];
     var eN = 0; var eS = 0;
     var cName = contact.name; var cSurname = contact.lastname;
-    if (cName == ""){ eN = 1; var fName = document.getElementById("formName"); fName.style.border = "1px solid blue";
+    if (cName == " "){ eN = 1; var fName = document.getElementById("formName"); fName.style.border = "1px solid blue";
         alert("Enter name!");}
-    if(cSurname == ""){ eS = 1; var fSurnm= document.getElementById("formSurnm"); fSurnm.style.border = "1px solid blue";
+    if(cSurname == " "){ eS = 1; var fSurnm= document.getElementById("formSurnm"); fSurnm.style.border = "1px solid blue";
         alert("Enter surname!");}
     for (i = 0; i < tel.length; i++) { var inp = document.getElementById("formTelephone" + i); contact.telephone[i] = inp.value; }
     for (x = 0; x < email.length; x++) { var einpt = document.getElementById("formEmail"+x); contact.email[x] = einpt.value; }
@@ -73,18 +73,31 @@ function saveContact(form) {
     var email_oblig = /[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
     for (i = 0; i < tel.length; i++) {
         var formPhone = document.getElementById("formTelephone" + i);
-        if ((formPhone.value == "") || (!formPhone.value.match(tel_oblig))){
+        if ((formPhone.value == " ")||(formPhone.value == "")) {
             var noth = 1; formPhone.style.border = "1px solid red"; alert("Enter phonenumber! At least four numbers!");
             return false;
         } else {formPhone.style.border= "1px solid black";}
     }
+    for (i = 0; i < tel.length; i++) {
+        var formPhone = document.getElementById("formTelephone" + i);
+        if  (!formPhone.value.match(tel_oblig)){
+            var noth1 = 1; formPhone.style.border = "1px solid red"; alert("Incorrect phonenumber! Use only numbers!");
+            return false;
+        } else {formPhone.style.border= "1px solid black";}
+    }
     for (i = 0; i < email.length; i++) { var formEmail = document.getElementById("formEmail" + i);
-        if ((formEmail.value == "") ||  (!formEmail.value.match(email_oblig))){
-            var nott = 1; formEmail.style.border = "1px solid red"; alert("Enter email! Don't forget to use symbol '@'! Example: qwe@gmail.com");
+        if ((formEmail.value == " ")|| (formEmail.value == "")){
+            var nott = 1; formEmail.style.border = "1px solid red"; alert("Enter email! Don't forget to use symbol '@'!Use only english letters");
             return false;
         } else {formEmail.style.border= "1px solid black";}
     }
-    if((z !== 1) && (m !== 1) && (noth !== 1) && (nott !== 1) && (cName !== 1) && (cSurname !== 1)){
+    for (i = 0; i < email.length; i++) { var formEmail = document.getElementById("formEmail" + i);
+        if ( !formEmail.value.match(email_oblig)){
+            var nott1 = 1; formEmail.style.border = "1px solid red"; alert("Incorrect email! Try again!");
+            return false;
+        } else {formEmail.style.border= "1px solid black";}
+    }
+    if((z !== 1) && (m !== 1) && (noth !== 1) && (noth1 !== 1) && (nott !== 1) && (nott1 !== 1) && (cName !== 1) && (cSurname !== 1)){
         contacts.push(contact); contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts));
         document.getElementById("newcont").style.display = "none"; location.reload();
          return false;
@@ -144,16 +157,26 @@ function editContact(editbtn) {
             } }
         }
         for (i = 0; i < teel.length; i++) { var formPh = document.getElementById("formTelephone" + i);
-            if ((formPh.value == "") || (!formPh.value.match(oblig))){ eP = 1; formPh.style.border = "1px solid red";
-                alert("Enter phonenumber!  At least four numbers! Exaample: 1234");
+            if ((formPh.value == " ") || (formPh.value == "")){ eP = 1; formPh.style.border = "1px solid red";
+                alert("Enter phonenumber!  At least four numbers!");
+            }
+        }
+        for (i = 0; i < teel.length; i++) { var formPh = document.getElementById("formTelephone" + i);
+            if  (!formPh.value.match(oblig)){ eP1 = 1; formPh.style.border = "1px solid red";
+                alert("Incorrect phonenumber! Use only numbers!");
             }
         }
         for (i = 0; i <emff.length; i++) { var formEmail=document.getElementById("formEmail" + i);
-            if ((formEmail.value == "") || (!formEmail.value.match(oem))){
+            if ((formEmail.value == " ") || (formEmail.value == "")){
                 eE = 1; formEmail.style.border = "1px solid red";
-                alert("Enter email! Don't forget to use symbol '@'! Example: qwe@gmail.com"); }
+                alert("Enter email! Don't forget to use symbol '@'!Use only english letters"); }
         }
-        if ((eN !== 1) && (eS !== 1) && (eP !== 1) && (eE !== 1) && (w !== 1) && (m !== 1)) {
+        for (i = 0; i <emff.length; i++) { var formEmail=document.getElementById("formEmail" + i);
+            if (!formEmail.value.match(oem)){
+                eE1 = 1; formEmail.style.border = "1px solid red";
+                alert("Incorrect email! Try again!Use only english letters"); }
+        }
+        if ((eN !== 1) && (eS !== 1) && (eP !== 1)&& (eP1 !== 1) && (eE !== 1) && (eE !== 1) && (w !== 1) && (m !== 1)) {
             contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts)); document.getElementById("newcont").style.display = "none";
             var qw = document.getElementById("creating"); qw.style.display = "block"; location.reload();
         }
