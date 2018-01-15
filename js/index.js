@@ -41,6 +41,12 @@ function saveContact(form) {
     var contact = {};
     var tel = document.getElementsByClassName("tell"); var email= document.getElementsByClassName("emailf");
     contact.name = form.name.value; contact.lastname = form.lastname.value; contact.telephone = ['']; contact.email = [''];
+    var eN = 0; var eS = 0;
+    var cName = contact.name; var cSurname = contact.lastname;
+    if (cName == ""){ eN = 1; var fName = document.getElementById("formName"); fName.style.border = "1px solid blue";
+        alert("Enter name!");}
+    if(cSurname == ""){ eS = 1; var fSurnm= document.getElementById("formSurnm"); fSurnm.style.border = "1px solid blue";
+        alert("Enter surname!");}
     for (i = 0; i < tel.length; i++) { var inp = document.getElementById("formTelephone" + i); contact.telephone[i] = inp.value; }
     for (x = 0; x < email.length; x++) { var einpt = document.getElementById("formEmail"+x); contact.email[x] = einpt.value; }
     for(i = 0; i < tel.length; i++){
@@ -68,17 +74,17 @@ function saveContact(form) {
     for (i = 0; i < tel.length; i++) {
         var formPhone = document.getElementById("formTelephone" + i);
         if ((formPhone.value == "") || (!formPhone.value.match(tel_oblig))){
-            var noth = 1; formPhone.style.border = "1px solid red";
+            var noth = 1; formPhone.style.border = "1px solid red"; alert("Enter number!");
             return false;
         } else {formPhone.style.border= "1px solid black";}
     }
     for (i = 0; i < email.length; i++) { var formEmail = document.getElementById("formEmail" + i);
         if ((formEmail.value == "") ||  (!formEmail.value.match(email_oblig))){
-            var nott = 1; formEmail.style.border = "1px solid red";
+            var nott = 1; formEmail.style.border = "1px solid red"; alert("Enter email!");
             return false;
         } else {formEmail.style.border= "1px solid black";}
     }
-    if((z !== 1) && (m !== 1) && (noth !== 1) && (nott !== 1)){
+    if((z !== 1) && (m !== 1) && (noth !== 1) && (nott !== 1) && (cName !== 1) && (cSurname !== 1)){
         contacts.push(contact); contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts));
         document.getElementById("newcont").style.display = "none"; location.reload();
          return false;
