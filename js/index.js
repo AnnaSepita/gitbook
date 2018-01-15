@@ -33,7 +33,6 @@ function closeInfo() { var nnew = document.getElementById("creating"); nnew.styl
 window.onclick = function(event) { var ncc = document.getElementById("creating"); if (event.target == ncc){
     ncc.style.display = "none"; closeInfo();}
 };
-//function closeMessage() { location.reload(); }
 function closeMessage1() { location.reload(); }
 function saveContact(form) {
     var contacts = JSON.parse(localStorage.getItem("contacts"));
@@ -112,7 +111,8 @@ function removeContact(contact){ var remov = document.getElementById("rem"); rem
     var no = document.getElementById("remove_no"); no.onclick = function () {var  rem = document.getElementById("rem"); rem.style.display = "none";};
 }
 function editContact(editbtn) {
-    var newcontact = document.getElementById("newcont");  var id = editbtn.id; var contacts = JSON.parse(localStorage.getItem("contacts"));
+    var newcontact = document.getElementById("newcont");
+    var id = editbtn.id; var contacts = JSON.parse(localStorage.getItem("contacts"));
     var contact = contacts[id]; var forma = document.getElementById("addd"); var adds = document.getElementById("addSave");
     var save = document.getElementById("addSave2");  var nameedit = document.getElementById('formName');
     var surmane = document.getElementById('formSurnm');  var tel = document.getElementById("formTelephone0");
@@ -122,7 +122,9 @@ function editContact(editbtn) {
     surmane.value = contact.lastname;
     tel.value = contact.telephone[0];
     for (i = 1; i < contel.length; i++) {
-        var pph = document.createElement("p"); var telff = document.getElementById("tels_form"); pph.id = "tel_field" + i; pph.className = "tell"; telff.appendChild(pph);
+        var pph = document.createElement("p");
+        var telff = document.getElementById("tels_form");
+        pph.id = "tel_field" + i; pph.className = "tell"; telff.appendChild(pph);
         var new_string = '<i class="fa new fa-phone" aria-hidden="true"></i>';
         new_string += '<input type="tel" value="' + contact.telephone[i] + '" name="telephone" id="formTelephone' + i + '" required placeholder="Phone">';
         new_string += '<button type="button" id="' + i + '"></button>';
@@ -130,14 +132,15 @@ function editContact(editbtn) {
     }
     var emailed = document.getElementById('formEmail0');  var contem = contact.email;
     emailed.value = contact.email[0];
-    for (i = 1; i < contem.length; i++) { var inpemail = document.createElement("p"); var emf = document.getElementById("emails_form");
+    for (i = 1; i < contem.length; i++) { var inpemail = document.createElement("p");
+        var emf = document.getElementById("emails_form");
         inpemail.id = "email_field" + i; inpemail.className = "emailf"; emf.appendChild(inpemail); inpemail.innerHTML += new_string; }
     save.onclick = function () { var contacts = JSON.parse(localStorage.getItem("contacts")); var contact = contacts[id];
         contact.name = nameedit.value; contact.lastname = surmane.value;
         var teel = document.getElementsByClassName("tell"); var emff = document.getElementsByClassName("emailf");
         for (i = 0; i < teel.length; i++) { var t = document.getElementById("formTelephone" + i); contact.telephone[i] = t.value; }
         for (l = 0; l < emff.length; l++) { var e = document.getElementById("formEmail" + l); contact.email[l] = e.value; }
-        var eN = 0; var eS = 0; var eP = 0; var eE = 0;
+        var eN = 0; var eS = 0; var eP = 0; var eE = 0; var eP1 = 0; var eE1 = 0;
         var oblig =/[0-9+]{4,13}/i; var oem = /[0-9a-z_-]+@[0-9a-z_-]+\.[a-z]{2,5}/i;
         var cName = contact.name; var cSurname = contact.lastname;
         if (cName == ""){ eN = 1; var fName = document.getElementById("formName"); fName.style.border = "1px solid red";
@@ -146,19 +149,21 @@ function editContact(editbtn) {
             alert("Enter surname!");}
         for(i = 0; i < teel.length; i++){ for(j = 0; j < teel.length; j++){
             var pph1 = document.getElementById("formTelephone" + i); var pph2 = document.getElementById("formTelephone" + j);
-            if(i !== j){ if(pph1.value == pph2.value){ pph1.style.border = "1px solid blue"; pph2.style.border = "1px solid blue"; var w = 1;
+            if(i !== j){ if(pph1.value == pph2.value){ pph1.style.border = "1px solid blue"; pph2.style.border = "1px solid blue";
+            var w = 1;
                 return false; }
             } }
         }
         for(i = 0; i < emff.length; i++){ for(j = 0; j < emff.length; j++){
             var e1 = document.getElementById("formEmail" + i); var e2 = document.getElementById("formEmail" + j);
-            if(i !== j){ if(e1.value == e2.value){ e1.style.border = "1px solid blue"; e2.style.border = "1px solid blue"; var m = 1;
+            if(i !== j){ if(e1.value == e2.value){ e1.style.border = "1px solid blue"; e2.style.border = "1px solid blue";
+            var m = 1;
                 return false; }
             } }
         }
         for (i = 0; i < teel.length; i++) { var formPh = document.getElementById("formTelephone" + i);
             if ((formPh.value == " ") || (formPh.value == "")){ eP = 1; formPh.style.border = "1px solid red";
-                alert("Enter phonenumber!  At least four numbers!");
+                alert("Enter phonenumber! At least four numbers!");
             }
         }
         for (i = 0; i < teel.length; i++) { var formPh = document.getElementById("formTelephone" + i);
@@ -176,9 +181,11 @@ function editContact(editbtn) {
                 eE1 = 1; formEmail.style.border = "1px solid red";
                 alert("Incorrect email! Try again!Use only english letters"); }
         }
-        if ((eN !== 1) && (eS !== 1) && (eP !== 1)&& (eP1 !== 1) && (eE !== 1) && (eE !== 1) && (w !== 1) && (m !== 1)) {
-            contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts)); document.getElementById("newcont").style.display = "none";
+        if ((eN !== 1) && (eS !== 1) && (eP !== 1)&& (eP1 !== 1) && (eE !== 1) && (eE1 !== 1) && (w !== 1) && (m !== 1)) {
+            contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts));
+            document.getElementById("newcont").style.display = "none";
             var qw = document.getElementById("creating"); qw.style.display = "block"; location.reload();
+
         }
     };
 }
