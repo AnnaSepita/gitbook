@@ -33,7 +33,7 @@ function closeInfo() { var nnew = document.getElementById("creating"); nnew.styl
 window.onclick = function(event) { var ncc = document.getElementById("creating"); if (event.target == ncc){
     ncc.style.display = "none"; closeInfo();}
 };
-function closeMessage() { location.reload(); }
+//function closeMessage() { location.reload(); }
 function closeMessage1() { location.reload(); }
 function saveContact(form) {
     var contacts = JSON.parse(localStorage.getItem("contacts"));
@@ -80,7 +80,7 @@ function saveContact(form) {
     }
     if((z !== 1) && (m !== 1) && (noth !== 1) && (nott !== 1)){
         contacts.push(contact); contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts));
-        document.getElementById("newcont").style.display = "none";
+        document.getElementById("newcont").style.display = "none"; location.reload();
          return false;
     }
 }
