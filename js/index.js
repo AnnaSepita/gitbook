@@ -104,8 +104,8 @@ function saveContact(form) {
     }
 }
 function removeContact(contact){ var remov = document.getElementById("rem"); remov.style.display = "inline-block";
-    var yes =document.getElementById("remove_yes") ; yes.onclick = function () { var id = contact.id;
-        contacts = JSON.parse(localStorage.getItem("contacts")); contacts.splice(id-1, 1);
+    var yes =document.getElementById("remove_yes") ; yes.onclick = function () { var id = contact.id-1;
+        contacts = JSON.parse(localStorage.getItem("contacts")); contacts.splice(id, 1);
         if (contacts.length == 0)  {var nocon = document.getElementById("noco"); nocon.style.display="block"; }
         localStorage.setItem("contacts", JSON.stringify(contacts));
         var contacts = document.getElementById("contact-" + id); contacts.parentNode.removeChild(contacts); remov.style.display = "none"; };
