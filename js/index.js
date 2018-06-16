@@ -9,10 +9,10 @@ function search() {
         else { norez.style.display = "block"; }
     }
 }
-function compare(a,b) {
-    var contacts = JSON.parse(localStorage.getItem("contacts"));
-    if (a.name < b.name)  return -1; if (a.name > b.name) {return 1;}
-    return 0;  }
+// function compare(a,b) {
+//     var contacts = JSON.parse(localStorage.getItem("contacts"));
+//     if (a.name < b.name)  return -1; if (a.name > b.name) {return 1;}
+//     return 0;  }
 function addContact() { document.forms["addd"].reset();
     var newadd = document.getElementById("addd"); var nc = document.getElementById("newcont");  var as =document.getElementById("addSave");
     var ase= document.getElementById('addSave2');
@@ -96,7 +96,9 @@ function saveContact(form) {
         } else {formEmail.style.border= "1px solid black";}
     }
     if((z !== 1) && (m !== 1) && (noth !== 1) && (noth1 !== 1) && (nott !== 1) && (nott1 !== 1) && (cName !== 1) && (cSurname !== 1)){
-        contacts.push(contact); contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts));
+        contacts.push(contact);
+//         contacts.sort(compare);
+        localStorage.setItem("contacts", JSON.stringify(contacts));
         document.getElementById("newcont").style.display = "none"; location.reload();
          return false;
     }
@@ -181,7 +183,8 @@ function editContact(editbtn) {
                 alert("Incorrect email! Try again!Use only english letters"); }
         }
         if ((eN !== 1) && (eS !== 1) && (eP !== 1)&& (eP1 !== 1) && (eE !== 1) && (eE1 !== 1) && (w !== 1) && (m !== 1)) {
-            contacts.sort(compare); localStorage.setItem("contacts", JSON.stringify(contacts));
+//             contacts.sort(compare); 
+            localStorage.setItem("contacts", JSON.stringify(contacts));
             document.getElementById("newcont").style.display = "none";
             var qw = document.getElementById("creating"); qw.style.display = "block"; location.reload();
 
