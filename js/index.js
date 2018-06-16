@@ -263,3 +263,4 @@ $( function() {
         $( "#addd" ).dialog( "open" );
     });
 } );
+$('#addd').insertBefore('#contacts')
